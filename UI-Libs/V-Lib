@@ -133,7 +133,6 @@ function VLib:Window(title)
 	local RainbowLine = Instance.new("Frame")
 	local RainbowLineCorner = Instance.new("UICorner")
 	local ContainerHold = Instance.new("Folder")
-	local DragFrame = Instance.new("Frame")
 
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = Library
@@ -141,7 +140,7 @@ function VLib:Window(title)
  MainFrame.BorderColor3 = Color3.fromRGB(0,255,255)
  MainFrame.BorderSizePixel = 2
 	MainFrame.Position = UDim2.new(0.340104192, 0, 0.297149122, 0)
-	MainFrame.Size = UDim2.new(0, 0, 0, 0)
+	MainFrame.Size = UDim2.new(0, 614, 0, 340)
 
 	LeftFrame.Name = "LeftFrame"
 	LeftFrame.Parent = MainFrame
@@ -220,19 +219,6 @@ function VLib:Window(title)
 
 	ContainerHold.Name = "ContainerHold"
 	ContainerHold.Parent = MainFrame
-
-	DragFrame.Name = "DragFrame"
-	DragFrame.Parent = MainFrame
-	DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	DragFrame.BackgroundTransparency = 1.000
-	DragFrame.Position = UDim2.new(0.30130294, 0, 0.00253164559, 0)
-	DragFrame.Size = UDim2.new(0, 428, 0, 21)
-
-			TweenService:Create(
-						MainFrame,
-						TweenInfo.new(.2, Enum.EasingStyle.Quad),
-						{Size = UDim2.new(0, 614, 0, 340)}
-					):Play()
 
 	MakeDraggable(LeftFrame, MainFrame)
 
