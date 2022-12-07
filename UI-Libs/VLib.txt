@@ -141,7 +141,7 @@ function VLib:Window(title)
  MainFrame.BorderColor3 = Color3.fromRGB(0,255,255)
  MainFrame.BorderSizePixel = 2
 	MainFrame.Position = UDim2.new(0.340104192, 0, 0.297149122, 0)
-	MainFrame.Size = UDim2.new(0, 614, 0, 395)
+	MainFrame.Size = UDim2.new(0, 0, 0, 0)
 
 	LeftFrame.Name = "LeftFrame"
 	LeftFrame.Parent = MainFrame
@@ -149,7 +149,7 @@ function VLib:Window(title)
  LeftFrame.BorderColor3 = Color3.fromRGB(0,255,255)
  LeftFrame.BorderSizePixel = 2
 	LeftFrame.Position = UDim2.new(-0.000674468291, 0, -0.000149806539, 0)
-	LeftFrame.Size = UDim2.new(0, 186, 0, 395)
+	LeftFrame.Size = UDim2.new(0, 186, 0, 340)
 
 	MainTitle.Name = "MainTitle"
 	MainTitle.Parent = LeftFrame
@@ -165,7 +165,7 @@ function VLib:Window(title)
 
 	Circle.Name = "Circle"
 	Circle.Parent = LeftFrame
-	Circle.BackgroundColor3 = Color3.fromRGB(118, 106, 255)
+	Circle.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
 	Circle.Position = UDim2.new(0.0834304541, 0, 0.0474189818, 0)
 	Circle.Size = UDim2.new(0, 38, 0, 38)
 
@@ -190,7 +190,7 @@ function VLib:Window(title)
 	GameTitle.Position = UDim2.new(0.324129164, 0, 0.0892162398, 0)
 	GameTitle.Size = UDim2.new(0, 71, 0, 20)
 	GameTitle.Font = Enum.Font.Gotham
-	GameTitle.Text = ""..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+	GameTitle.Text = "SupLua#0945"
 	GameTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 	GameTitle.TextSize = 14.000
 	GameTitle.TextTransparency = 0.400
@@ -228,13 +228,18 @@ function VLib:Window(title)
 	DragFrame.Position = UDim2.new(0.30130294, 0, 0.00253164559, 0)
 	DragFrame.Size = UDim2.new(0, 428, 0, 21)
 
+			TweenService:Create(
+						MainFrame,
+						TweenInfo.new(.2, Enum.EasingStyle.Quad),
+						{Size = UDim2.new(0, 614, 0, 340)}
+					):Play()
+
 	MakeDraggable(LeftFrame, MainFrame)
 
 	local Tabs = {}
 
 	function Tabs:Tab(text)
 		local Tab = Instance.new("TextButton")
-		local TabCorner = Instance.new("UICorner")
 		local Title = Instance.new("TextLabel")
 
 		Tab.Name = "Tab"
@@ -247,10 +252,8 @@ function VLib:Window(title)
 		Tab.TextColor3 = Color3.fromRGB(0, 0, 0)
 		Tab.TextSize = 14.000
 		Tab.BackgroundTransparency = 1
-
-		TabCorner.CornerRadius = UDim.new(0, 6)
-		TabCorner.Name = "TabCorner"
-		TabCorner.Parent = Tab
+Tab.BorderColor3 = Color3.fromRGB(0,255,255)
+Tab.BorderSizePixel = 2
 
 		Title.Name = "Title"
 		Title.Parent = Tab
