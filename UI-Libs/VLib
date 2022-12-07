@@ -486,7 +486,7 @@ function VLib:Window(title)
 			)
 
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-
+end
 		function ContainerItems:Slider(text, min, max, start, callback) 
                         local dragging = false
 			local Slider = Instance.new("TextButton")
@@ -596,7 +596,7 @@ function VLib:Window(title)
 			)
 
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
-
+end
 		function ContainerItems:Dropdown(text, list, callback)
 			local DropToggled = false
 			local FrameSize = 0
@@ -1293,7 +1293,7 @@ function VLib:Window(title)
 					Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 				end
 			)
-
+end
 		function ContainerItems:Label(text)
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
