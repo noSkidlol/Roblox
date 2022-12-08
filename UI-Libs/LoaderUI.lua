@@ -103,8 +103,8 @@ function Library:WindowLoad(name)
         Loader.Name = "Loader"
         Loader.Parent = BlueXLoader
         Loader.AnchorPoint = Vector2.new(0.5, 0.5)
-        Loader.BackgroundColor3 = Color3.fromRGB(120, 255, 0)
-        Loader.BorderColor3 = Color3.fromRGB(120, 255, 0)
+        Loader.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        Loader.BorderColor3 = Color3.fromRGB(0, 255, 355)
         Loader.BorderSizePixel = 2
         Loader.Position = UDim2.new(0.5, 0, 0.5, 0)
         Loader.Size = UDim2.new(0, 0,  0, 0)
@@ -132,7 +132,7 @@ function Library:WindowLoad(name)
         Title.Size = UDim2.new(1, -6, -0.262604743, 55)
         Title.ZIndex = 4
         Title.Font = Enum.Font.SourceSansBold
-        Title.Text = name or "SAZA HUB | Loader"
+        Title.Text = name.." | Loader" or "SAZA HUB | Loader"
         Title.TextColor3 = Color3.fromRGB(197, 197, 197)
         Title.TextSize = 22.000
         Title.TextTransparency = 1
@@ -151,7 +151,7 @@ function Library:WindowLoad(name)
 
         Bar.Name = "Bar"
         Bar.Parent = LoadBar
-        Bar.BackgroundColor3 = Color3.fromRGB(120, 255, 0)
+        Bar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
         Bar.BorderSizePixel = 0
         Bar.Size = UDim2.new(0, 0, 1, 0)
         Bar.ZIndex = 4
@@ -230,14 +230,12 @@ function Library:WindowLoad(name)
             Message.Text = "Checking . . ."
             wait(.4)
         end
-        setSize(40)
-        Message.Text = "Checking for Updates!"
-        wait(3)
         setSize(60)
+        Message.Text = "Looking for Updates!"
+        wait(3)
+        setSize(80)
         Message.Text = "Latest Update!" 
         wait(.5)
-        setSize(90)
-        wait(.2)
         setSize(100) 
         
         createTween(Bar,{BackgroundTransparency = 1}, {
@@ -287,19 +285,19 @@ function Library:Window(Title)
 
 	Frame.Parent = ScreenGui
 	Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
- Frame.BorderColor3 = Color3.fromRGB(0,255,255)
- Frame.BorderSizePixel = 2
+        Frame.BorderColor3 = Color3.fromRGB(0,255,255)
+        Frame.BorderSizePixel = 2
 	Frame.Position = UDim2.new(0.5, 0, 0.8, 0)
 	Frame.Size = UDim2.new(0, 0, 0, 0)
- Frame.AnchorPoint = Vector2.new(0.5, 1)
- Frame.ClipsDescendants = true
+        Frame.AnchorPoint = Vector2.new(0.5, 1)
+        Frame.ClipsDescendants = true
 
 	Frame_2.Parent = Frame
 	Frame_2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 	Frame_2.BorderSizePixel = 0
 	Frame_2.Position = UDim2.new(0.06, 0, 0.145615742, 0)
 	Frame_2.Size = UDim2.new(0, 0, 0, 0)
- Frame_2.ClipsDescendants = true
+        Frame_2.ClipsDescendants = true
 
 	UIListLayout.Parent = Frame_2
 	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -318,13 +316,12 @@ function Library:Window(Title)
 	TextLabel.TextColor3 = Color3.fromRGB(232, 232, 232)
 	TextLabel.TextSize = 15.000
 	TextLabel.TextWrapped = false
- TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+        TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 
- DragUI(Frame, Frame)
+        DragUI(Frame, Frame)
 
- TweenService:Create(Frame, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 397, 0, 200)}):Play()
-
- TweenService:Create(Frame_2, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 347, 0, 160)}):Play()
+        TweenService:Create(Frame, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 397, 0, 200)}):Play()
+        TweenService:Create(Frame_2, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 347, 0, 160)}):Play()
 
 local Feature = {}
 
@@ -333,7 +330,7 @@ function Feature:Button(Name,Call)
 		
 		TextButton.Parent = Frame_2
 		TextButton.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-  TextButton.BorderColor3 = Color3.fromRGB(0,255,255)
+                TextButton.BorderColor3 = Color3.fromRGB(0,255,255)
 		TextButton.BorderSizePixel = 2
 		TextButton.Size = UDim2.new(0, 200, 0, 50)
 		TextButton.Font = Enum.Font.SourceSansBold
@@ -342,22 +339,22 @@ function Feature:Button(Name,Call)
 		TextButton.TextScaled = false
 		TextButton.TextSize = 17.000
 		TextButton.TextWrapped = true
-  TextButton.AutoButtonColor = true 
-  TextButton.MouseButton1Click:Connect(function()
-    pcall(Call)
-	end)
+                TextButton.AutoButtonColor = true 
+                TextButton.MouseButton1Click:Connect(function()
+                  pcall(Call)
+   end)
 end
 
-function Feature:Box(Name,Call)
+function Feature:Box(NameParent,Name,Call)
 		local TextButton2 = Instance.new("TextBox")
 		
 		TextButton2.Parent = Frame_2
 		TextButton2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-  TextButton2.BorderColor3 = Color3.fromRGB(0,255,255)
+                TextButton2.BorderColor3 = Color3.fromRGB(0,255,255)
 		TextButton2.BorderSizePixel = 2
 		TextButton2.Size = UDim2.new(0, 200, 0, 50)
 		TextButton2.Font = Enum.Font.SourceSansBold
-		TextButton2.Text = Name
+		TextButton2.Text = tostring(NameParent).." : "..Name
 		TextButton2.TextColor3 = Color3.fromRGB(235, 235, 235)
 		TextButton2.TextScaled = false
 		TextButton2.TextSize = 17.000
