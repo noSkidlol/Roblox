@@ -1283,7 +1283,7 @@ end
 				end
 			)
 end
-		function ContainerItems:Label(text)
+		function ContainerItems:Label(text, color)
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
 
@@ -1293,7 +1293,7 @@ end
 			Label.Size = UDim2.new(0, 403, 0, 28)
 			Label.AutoButtonColor = false
 			Label.Font = Enum.Font.Gotham
-			Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Label.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Label.TextSize = 14.000
 			Label.Text = text
 
