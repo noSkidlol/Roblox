@@ -171,7 +171,7 @@ function Library:WindowLoad(name)
         Message.SizeConstraint = Enum.SizeConstraint.RelativeXX
         Message.ZIndex = 4
         Message.Font = Enum.Font.SourceSansItalic
-        Message.Text = "Welcome, " .. game:GetService("Players").LocalPlayer.Name
+        Message.Text = "Welcome, " .. game:GetService("Players").LocalPlayer.DisplayName
         Message.TextColor3 = Color3.fromRGB(197, 197, 197)
         Message.TextSize = 22.000
         Message.TextTransparency = 1
