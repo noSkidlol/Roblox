@@ -22,7 +22,7 @@ ScreenGui.Name = "Notification"
 ScreenGui.Parent = game.CoreGui
 
 Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.new(0,0,0)
+Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 Frame.BackgroundTransparency = 1
 Frame.BorderColor3 = Color3.fromRGB(0,255,255)
 Frame.Position = UDim2.new(1, -25, 1, -25)
