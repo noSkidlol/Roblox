@@ -272,6 +272,14 @@ function Library:WindowLoad(name)
 	BlueXLoader:Destroy()
 end
 
+function Library:Close()
+ for i,v in pairs(game.CoreGui:GetChildren()) do
+  if v.Name == "KeySystem" then
+   v:Destroy()
+  end
+ end
+end
+
 function Library:Window(Title)
         local Loader = Library:WindowLoad(Title)
 	local ScreenGui = Instance.new("ScreenGui")
@@ -324,6 +332,16 @@ function Library:Window(Title)
         TweenService:Create(Frame_2, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 347, 0, 160)}):Play()
 
 local Feature = {}
+
+function Feature:Setting(value)
+ if value == true then
+        TweenService:Create(Frame, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 0)}):Play()
+        TweenService:Create(Frame_2, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 0, 0, 0)}):Play()
+ elseif value == false then
+        TweenService:Create(Frame, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 397, 0, 200)}):Play()
+        TweenService:Create(Frame_2, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 347, 0, 160)}):Play()
+    end
+end
 
 function Feature:Button(Name,Call)
 		local TextButton = Instance.new("TextButton")
