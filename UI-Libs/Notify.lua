@@ -71,6 +71,15 @@ TextButton12.TextSize = 14
 TextButton12.TextWrapped = true
 TextButton12.TextXAlignment = Enum.TextXAlignment.Right
 
+		coroutine.wrap(
+			function()
+				while wait() do
+					Frame.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
+end
+
 TweenService:Create(Frame, TweenInfo.new(.7, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play() 
 TweenService:Create(TextButton1, TweenInfo.new(.7, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play() 
 TweenService:Create(TextButton12, TweenInfo.new(.7, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play() 
@@ -80,12 +89,4 @@ TweenService:Create(TextButton1, TweenInfo.new(.7, Enum.EasingStyle.Quad, Enum.E
 TweenService:Create(TextButton12, TweenInfo.new(.7, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play() 
 wait(.7)
 ScreenGui:Destroy() 
-		coroutine.wrap(
-			function()
-				while wait() do
-					Frame.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
-				end
-			end
-		)()
-end
 return LibNotify
