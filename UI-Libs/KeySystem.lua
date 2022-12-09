@@ -1,5 +1,8 @@
 local Library = {}
-
+function zigzag(X)
+	return math.acos(math.cos(X * math.pi)) / math.pi
+end
+counter = 0
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local coreGui = game:GetService("CoreGui")
@@ -103,8 +106,8 @@ function Library:WindowLoad(name)
         Loader.Name = "Loader"
         Loader.Parent = BlueXLoader
         Loader.AnchorPoint = Vector2.new(0.5, 0.5)
-        Loader.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-        Loader.BorderColor3 = Color3.fromRGB(0, 255, 355)
+        Loader.BackgroundColor3 = Color3.fromRGB(120, 255, 0)
+        Loader.BorderColor3 = Color3.fromRGB(120, 255, 0)
         Loader.BorderSizePixel = 2
         Loader.Position = UDim2.new(0.5, 0, 0.5, 0)
         Loader.Size = UDim2.new(0, 0,  0, 0)
@@ -140,7 +143,7 @@ function Library:WindowLoad(name)
         LoadBar.Name = "LoadBar"
         LoadBar.Parent = Menu
         LoadBar.AnchorPoint = Vector2.new(0.5, 0)
-        LoadBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LoadBar.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         LoadBar.BorderSizePixel = 0
         LoadBar.Position = UDim2.new(0.5, 0, 1, -28)
         LoadBar.Size = UDim2.new(1, -28, 0, 20)
@@ -151,7 +154,7 @@ function Library:WindowLoad(name)
 
         Bar.Name = "Bar"
         Bar.Parent = LoadBar
-        Bar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        Bar.BackgroundColor3 = Color3.fromRGB(120, 255, 0)
         Bar.BorderSizePixel = 0
         Bar.Size = UDim2.new(0, 0, 1, 0)
         Bar.ZIndex = 4
@@ -270,6 +273,16 @@ function Library:WindowLoad(name)
             TIME = .4
         }).Completed:Wait(1)
 	BlueXLoader:Destroy()
+
+		coroutine.wrap(
+			function()
+				while wait() do
+					Loader.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Loader.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Bar.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
 end
 
 function Library:Close()
@@ -293,7 +306,7 @@ function Library:Window(Title)
 
 	Frame.Parent = ScreenGui
 	Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-        Frame.BorderColor3 = Color3.fromRGB(0,255,255)
+        Frame.BorderColor3 = Color3.fromRGB(120,255,0)
         Frame.BorderSizePixel = 2
 	Frame.Position = UDim2.new(0.5, 0, 0.8, 0)
 	Frame.Size = UDim2.new(0, 0, 0, 0)
@@ -331,6 +344,14 @@ function Library:Window(Title)
         TweenService:Create(Frame, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 397, 0, 200)}):Play()
         TweenService:Create(Frame_2, TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = UDim2.new(0, 347, 0, 160)}):Play()
 
+		coroutine.wrap(
+			function()
+				while wait() do
+					Frame.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
+
 local Feature = {}
 
 function Feature:Setting(value)
@@ -348,7 +369,7 @@ function Feature:Button(Name,Call)
 		
 		TextButton.Parent = Frame_2
 		TextButton.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-                TextButton.BorderColor3 = Color3.fromRGB(0,255,255)
+                TextButton.BorderColor3 = Color3.fromRGB(120,255,0)
 		TextButton.BorderSizePixel = 2
 		TextButton.Size = UDim2.new(0, 200, 0, 50)
 		TextButton.Font = Enum.Font.SourceSansBold
@@ -361,6 +382,13 @@ function Feature:Button(Name,Call)
                 TextButton.MouseButton1Click:Connect(function()
                   pcall(Call)
    end)
+		coroutine.wrap(
+			function()
+				while wait() do
+					TextButton.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
 end
 
 function Feature:Box(Name,Call)
@@ -368,7 +396,7 @@ function Feature:Box(Name,Call)
 		
 		TextButton2.Parent = Frame_2
 		TextButton2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-                TextButton2.BorderColor3 = Color3.fromRGB(0,255,255)
+                TextButton2.BorderColor3 = Color3.fromRGB(120,255,0)
 		TextButton2.BorderSizePixel = 2
 		TextButton2.Size = UDim2.new(0, 200, 0, 50)
 		TextButton2.Font = Enum.Font.SourceSansBold
@@ -379,13 +407,19 @@ function Feature:Box(Name,Call)
 		TextButton2.TextWrapped = true
   
 TextButton2.Focused:Connect(function()
- TweenService:Create(TextButton2, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BorderColor3 = Color3.fromRGB(0,255,0)}):Play()
+ TweenService:Create(TextButton2, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{TextColor3 = Color3.fromRGB(255,255,255)}):Play()
 end)
 
 TextButton2.FocusLost:Connect(function()
- TweenService:Create(TextButton2, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{BorderColor3 = Color3.fromRGB(0,255,255)}):Play() 
-   pcall(Call, TextButton2.Text)
+ pcall(Call, TextButton2.Text)
  end)
+		coroutine.wrap(
+			function()
+				while wait() do
+					TextButton2.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
 end
 
 	function Feature:Label(Name)
@@ -402,21 +436,6 @@ end
 		TextLabel.TextSize = 14.000
 		TextLabel.TextWrapped = true
   end
-
-	function Feature:Label(Name)
-		local TextLabel = Instance.new("TextLabel")
-		
-		TextLabel.Parent = Frame_2
-		TextLabel.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-		TextLabel.BorderSizePixel = 0
-		TextLabel.Size = UDim2.new(0, 200, 0, 30)
-		TextLabel.Font = Enum.Font.SourceSansBold
-		TextLabel.Text = Name
-		TextLabel.TextColor3 = Color3.fromRGB(235, 235, 235)
-		TextLabel.TextScaled = true
-		TextLabel.TextSize = 14.000
-		TextLabel.TextWrapped = true
-              end
 	return Feature
 end
 return Library
