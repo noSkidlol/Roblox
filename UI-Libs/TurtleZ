@@ -562,7 +562,6 @@ function Library.AddWindow(s)
                             Dropdown:TweenSize(UDim2.new(1, -7,0, 34), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, .12)
                             dropped = false 
                         end
-                    --end
                 end)
                 
                 for i,v in next, list do
@@ -571,13 +570,13 @@ function Library.AddWindow(s)
 
                     Option.Name = "Option"
                     Option.Parent = OptionHolder
-                    Option.BackgroundColor3 = Theme.Header
+                    Option.BackgroundColor3 = Color3.fromRGB(45,45,45)
                     Option.BorderSizePixel = 0
                     Option.Size = UDim2.new(1, -16, 0, 30)
                     Option.AutoButtonColor = false
                     Option.Font = Enum.Font.Gotham
                     Option.Text = v
-                    Option.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    Option.TextColor3 = Theme.Text
                     Option.TextSize = 14.000
 
                     UICorner.CornerRadius = UDim.new(0, 6)
@@ -591,45 +590,7 @@ function Library.AddWindow(s)
                         Title.Text = title..": "..v
                     end)
                     OptionHolder:TweenSize(UDim2.new(1, 0, 0, OptionList.AbsoluteContentSize.Y + 15), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .15, true)
-                  end
-         function DrodownFunc:Clear()
-                for i,v in next, OptionHolder:GetChildren() do
-	         if v.Name == "Option" then
-		  v:Destroy()
-	         end
-              end
-          end				
-
-         function DropdownFunc:Add(v)
-                for i,v in next, list do
-                    local Option = Instance.new("TextButton")
-                    local UICorner = Instance.new("UICorner")
-
-                    Option.Name = "Option"
-                    Option.Parent = OptionHolder
-                    Option.BackgroundColor3 = Theme.Header
-                    Option.BorderSizePixel = 0
-                    Option.Size = UDim2.new(1, -16, 0, 30)
-                    Option.AutoButtonColor = false
-                    Option.Font = Enum.Font.Gotham
-                    Option.Text = v
-                    Option.TextColor3 = Color3.fromRGB(255, 255, 255)
-                    Option.TextSize = 14.000
-
-                    UICorner.CornerRadius = UDim.new(0, 6)
-                    UICorner.Parent = Option
-
-                    Option.MouseButton1Click:Connect(function()
-                        callback(v)
-                        dropped = false
-                        TweenService:Create(arrow, TweenInfo.new(.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Rotation = 0}):Play()
-                        Dropdown:TweenSize(UDim2.new(1, -5,0, 34), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .15, true)
-                        Title.Text = title..": "..v
-                    end)
-                    OptionHolder:TweenSize(UDim2.new(1, 0, 0, OptionList.AbsoluteContentSize.Y + 15), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .15, true)
-                end
             end
-            return DropdownFunc
         end
         return TabFunctions
     end
