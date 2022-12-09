@@ -3,6 +3,15 @@ function zigzag(X)
 	return math.acos(math.cos(X * math.pi)) / math.pi
 end
 counter = 0
+
+coroutine.wrap(
+	function()
+		while wait() do
+			counter = counter + 0.002
+		end
+	end
+)()
+
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local coreGui = game:GetService("CoreGui")
