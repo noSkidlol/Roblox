@@ -3,6 +3,17 @@
 ]]
 
 local LibNotify = {}
+function zigzag(X)
+	return math.acos(math.cos(X * math.pi)) / math.pi
+end
+counter = 0
+coroutine.wrap(
+	function()
+		while wait() do
+			counter = counter + 0.002
+		end
+	end
+)()
 
 local TweenService = game:GetService("TweenService")
 
@@ -24,7 +35,7 @@ ScreenGui.Parent = game.CoreGui
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 Frame.BackgroundTransparency = 1
-Frame.BorderColor3 = Color3.fromRGB(0,255,255)
+Frame.BorderColor3 = Color3.fromRGB(120,255,0)
 Frame.Position = UDim2.new(1, -25, 1, -25)
 Frame.AnchorPoint = Vector2.new(1, 1)
 Frame.Size = UDim2.new(0,280,0,100)
@@ -40,7 +51,7 @@ TextButton1.Position = UDim2.new(0,10.0,0,0)
 TextButton1.Size = UDim2.new(0.5,0,0.2)
 TextButton1.Font = Enum.Font.Gotham
 TextButton1.Text = "- "..Name
-TextButton1.TextColor3 = Color3.fromRGB(0,255,255)
+TextButton1.TextColor3 = Color3.fromRGB(255,255,255)
 TextButton1.TextScaled = true
 TextButton1.TextSize = 8
 TextButton1.TextWrapped = true
@@ -55,7 +66,7 @@ TextButton12.Position = UDim2.new(0,0,0.2,0)
 TextButton12.Size = UDim2.new(0,260,0,50)
 TextButton12.Font = Enum.Font.Code
 TextButton12.Text = Desc
-TextButton12.TextColor3 = Color3.fromRGB(0,255,255)
+TextButton12.TextColor3 = Color3.fromRGB(255,255,255)
 TextButton12.TextSize = 14
 TextButton12.TextWrapped = true
 TextButton12.TextXAlignment = Enum.TextXAlignment.Right
@@ -69,5 +80,12 @@ TweenService:Create(TextButton1, TweenInfo.new(.7, Enum.EasingStyle.Quad, Enum.E
 TweenService:Create(TextButton12, TweenInfo.new(.7, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play() 
 wait(.7)
 ScreenGui:Destroy() 
+		coroutine.wrap(
+			function()
+				while wait() do
+					Frame.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
 end
 return LibNotify
