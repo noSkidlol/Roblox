@@ -188,6 +188,16 @@ function Library:WindowLoad(name)
         Message.TextSize = 22.000
         Message.TextTransparency = 1
 			
+		coroutine.wrap(
+			function()
+				while wait() do
+					Loader.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Loader.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Bar.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
+
 	wait(2)
 
         createTween(Loader,{Size = UDim2.new(0, 280, 0, 98)}, {
@@ -282,16 +292,6 @@ function Library:WindowLoad(name)
             TIME = .4
         }).Completed:Wait(1)
 	BlueXLoader:Destroy()
-
-		coroutine.wrap(
-			function()
-				while wait() do
-					Loader.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
-					Loader.BorderColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
-					Bar.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
-				end
-			end
-		)()
 end
 
 function Library:Close()
