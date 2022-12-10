@@ -503,6 +503,64 @@ function Library.AddWindow(s)
                 end
             end)
         end
+        function TabFunctions:Keybind(text, callback)
+            callback = callback or function() end
+            local KeyBind = Instance.new("TextButton")
+            local UICorner_7 = Instance.new("UICorner")
+            local Title = Instance.new("TextLabel")
+            local CurrentKey = Instance.new("TextBox")
+            local UICorner_8 = Instance.new("UICorner")
+
+            KeyBind.Name = "KeyBind"
+            KeyBind.Parent = Page
+            KeyBind.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+            KeyBind.Size = UDim2.new(1, -6, 0, 34)
+            KeyBind.AutoButtonColor = false
+            KeyBind.Font = Enum.Font.SourceSans
+            KeyBind.Text = ""
+            KeyBind.TextColor3 = Color3.fromRGB(0, 0, 0)
+            KeyBind.TextSize = 14.000
+            
+            UICorner_7.CornerRadius = UDim.new(0, 6)
+            UICorner_7.Parent = KeyBind
+            
+            Title.Name = "Title"
+            Title.Parent = KeyBind
+            Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Title.BackgroundTransparency = 1.000
+            Title.Position = UDim2.new(0, 8, 0, 0)
+            Title.Size = UDim2.new(1, -6, 1, 0)
+            Title.Font = Enum.Font.Gotham
+            Title.Text = text
+            Title.TextColor3 = Theme.Text
+            Title.TextSize = 14.000
+            Title.TextXAlignment = Enum.TextXAlignment.Left
+            
+            CurrentKey.Name = "CurrentKey"
+            CurrentKey.Parent = KeyBind
+            CurrentKey.AnchorPoint = Vector2.new(1, 0.5)
+            CurrentKey.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+            CurrentKey.Position = UDim2.new(1, -6, 0.5, 0)
+            CurrentKey.Size = UDim2.new(-0, 46, 0, 24)
+            CurrentKey.Font = Enum.Font.Gotham
+            CurrentKey.Text = "Here"
+            CurrentKey.TextColor3 = Theme.Text
+            CurrentKey.TextSize = 14.000
+            CurrentKey.TextWrapped = true
+            CurrentKey.TextScaled = true
+
+            UICorner_8.CornerRadius = UDim.new(0, 4)
+            UICorner_8.Parent = CurrentKey
+
+            TextButton2.Focused:Connect(function()
+              warn("TextBox")
+            end
+
+            TextButton2.FocusLost:Connect(function()
+              callback(CurrentKey.Text)
+            end)
+        end
+
         function TabFunctions:Dropdown(title, list, callback)
                 local DropdownFunc = {}
                 list = list or {}
