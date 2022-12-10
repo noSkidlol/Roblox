@@ -607,7 +607,7 @@ function Library.AddWindow(s)
 		coroutine.wrap(
 			function()
 				while wait() do
-					arrow.ImageColor3i = Color3.fromHSV(zigzag(counter), .8, 1)
+					arrow.ImageColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
 				end
 			end
 		)()
