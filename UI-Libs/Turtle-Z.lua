@@ -503,7 +503,7 @@ function Library.AddWindow(s)
                 end
             end)
         end
-        function TabFunctions:Keybind(text, callback)
+        function TabFunctions:Box(text, callback)
             callback = callback or function() end
             local KeyBind = Instance.new("TextButton")
             local UICorner_7 = Instance.new("UICorner")
@@ -552,11 +552,11 @@ function Library.AddWindow(s)
             UICorner_8.CornerRadius = UDim.new(0, 4)
             UICorner_8.Parent = CurrentKey
 
-            TextButton2.Focused:Connect(function()
+            CurrentKey.Focused:Connect(function()
               warn("TextBox")
             end
 
-            TextButton2.FocusLost:Connect(function()
+            CurrentKey.FocusLost:Connect(function()
               callback(CurrentKey.Text)
             end)
         end
