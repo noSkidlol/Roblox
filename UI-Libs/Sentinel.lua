@@ -554,7 +554,7 @@ function Library.AddWindow(s)
 
             CurrentKey.Focused:Connect(function()
               warn("TextBox")
-            end
+            end)
 
             CurrentKey.FocusLost:Connect(function()
               callback(CurrentKey.Text)
