@@ -2,10 +2,23 @@ pcall(function()
     game:GetService('CoreGui'):FindFirstChild('Sentinel'):Destroy() 
 end) 
 
+function zigzag(X)
+	return math.acos(math.cos(X * math.pi)) / math.pi
+end
+counter = 0
+
+coroutine.wrap(
+	function()
+		while wait() do
+			counter = counter + 0.002
+		end
+	end
+)()
+
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
     
-local Theme = {-- These Match on UI's
+local Theme = {
     Header = Color3.fromRGB(120,255,0), 
     Scroll = Color3.fromRGB(120,255,0), 
     Text = Color3.fromRGB(255,255,255)
@@ -200,6 +213,17 @@ function Library.AddWindow(s)
     Cover.Position = UDim2.new(1, 0, 0.5, 0)
     Cover.Size = UDim2.new(0, 5, 1, 0)
 
+		coroutine.wrap(
+			function()
+				while wait() do
+					Shadow.ImageColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Line.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Logo.ImageColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Close.ImageColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
+
     local Tabs = {}
 
     function Tabs.AddTab(title)
@@ -266,6 +290,15 @@ function Library.AddWindow(s)
             end
         end)
                 
+		coroutine.wrap(
+			function()
+				while wait() do
+					TabButton.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Page.ScrollBarImageColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
+
         local TabFunctions = {}
 
         function TabFunctions:Button(title, callback)
@@ -375,7 +408,14 @@ function Library.AddWindow(s)
                 end
                 callback(toggled)
             end)
-
+		coroutine.wrap(
+			function()
+				while wait() do
+					Toggle_2.BackgroundColor3 = Color3.fromHSV(zigzag(counter), .8, 1)
+					Stroke.Color = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
         end
         function TabFunctions:Label(labeltext)
             local TextLabel = Instance.new("TextLabel")
@@ -564,6 +604,13 @@ function Library.AddWindow(s)
                         end
                 end)
                 
+		coroutine.wrap(
+			function()
+				while wait() do
+					arrow.ImageColor3i = Color3.fromHSV(zigzag(counter), .8, 1)
+				end
+			end
+		)()
                 for i,v in next, list do
                     local Option = Instance.new("TextButton")
                     local UICorner = Instance.new("UICorner")
