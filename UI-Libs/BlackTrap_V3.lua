@@ -826,7 +826,7 @@ function Blacklib:Window(text, desc)
                 ImageLabel.Position = UDim2.new(0, 5, 0, 6)
                 ImageLabel.Size = UDim2.new(0, 18, 0, 18)
                 ImageLabel.Image = "rbxassetid://8825010231"
-                ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 0)
+                ImageLabel.ImageColor3 = _G.SectionColor
                 
                 Space.Name = "Space"
                 Space.Parent = CheckFrame2
@@ -1097,7 +1097,7 @@ function Blacklib:Window(text, desc)
                     ItemList.Size = UDim2.new(0, 375, 0, 30)
                     ItemList.AutoButtonColor = false
                     ItemList.Font = Enum.Font.Code
-                    ItemList.TextColor3 = Color3.fromRGB(255, 255, 0)
+                    ItemList.TextColor3 = _G.SectionColor
                     ItemList.TextSize = 12.000
                     ItemList.Text = v or "None..."
                     ItemList.TextXAlignment = Enum.TextXAlignment.Center
